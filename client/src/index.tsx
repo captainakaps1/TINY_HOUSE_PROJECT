@@ -81,7 +81,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/host" component={Host}/>
-          <Route exact path="/listing/:id" component={Listing}/>
+          <Route exact path="/listing/:id" render ={props => <Listing {...props}/>}/>
           <Route exact path="/login" render ={props => <Login {...props} setViewer={setViewer}/>}/>
           <Route exact path="/listings/:location?" component={Listings}/>
           <Route exact path="/user/:id" render ={props => <User {...props} viewer={viewer}/>}/>

@@ -1,6 +1,6 @@
 import React,{useState} from "react"
 import { RouteComponentProps } from "react-router-dom"
-import { useQuery } from "@apollo/react-hooks"
+import { useQuery } from "react-apollo"
 import { User as UserData, UserVariables } from "../../lib/graphql/queries/User/__generated__/User"
 import { USER } from "../../lib/graphql/queries"
 import { Viewer } from "../../lib/types"
@@ -11,6 +11,7 @@ import {UserProfile ,UserListings, UserBookings} from "./components"
 interface Props{
     viewer: Viewer
 }
+
 interface MatchParams{
     id: string
 }

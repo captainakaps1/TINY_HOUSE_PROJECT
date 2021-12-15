@@ -1,6 +1,6 @@
 import React, {useEffect,useRef} from "react"
 import { Redirect } from "react-router-dom";
-import { useApolloClient, useMutation } from "@apollo/react-hooks";
+import { useApolloClient, useMutation } from "react-apollo";
 import { Card, Layout, Spin , Typography } from "antd"
 import googlelogo from "./assets/google_logo.jpg"
 import { Viewer } from "../../lib/types";
@@ -12,7 +12,7 @@ import { ErrorBanner } from "../../lib/components"
 import { displayErrorMessage, displaySuccessNotification } from "../../lib/components/utils";
 
 const { Content } = Layout;
-const { Text, Title } = Typography;
+const { Text, Title } = Typography; 
 
 interface Props{
     setViewer: (viewer:Viewer) => void
