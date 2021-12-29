@@ -31,7 +31,7 @@ export const Home = ({ history }: RouteComponentProps) =>{
     const onSearch = (value : string) => {
         const trimmedValue = value.trim()
 
-        if(!trimmedValue){
+        if(trimmedValue){
             history.push(`/listings/${trimmedValue}`)
         }else{
             displayErrorMessage("Please enter a valid search!!")
