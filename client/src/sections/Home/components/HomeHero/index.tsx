@@ -37,7 +37,7 @@ export const HomeHero = ({ onSearch }: Props) => {
                     </Link>
                 </Col>
                 <Col xs={0} md={6}>
-                    <Link to="/listingd/los%20angeles">
+                    <Link to="/listings/los%20angeles">
                         <Card cover={<img alt="Los Angeles" src={losAngelesImage}/>}>
                             Los Angeles
                         </Card>
