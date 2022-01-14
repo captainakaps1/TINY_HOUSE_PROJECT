@@ -2,7 +2,7 @@ import React ,{ useState , useEffect,useRef }from 'react';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider, useMutation } from "react-apollo";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import {Home,Host,Listing,Listings,NotFound,User,Login,AppHeader} from "./sections";
+import {Home,Host,Listing,Listings,NotFound,User,Login,AppHeader,Stripe} from "./sections";
 import { LOG_IN } from './lib/graphql/mutation';
 import { LogIn as LogInData, LogInVariables } from './lib/graphql/mutation/LogIn/__generated__/LogIn';
 import { Affix,Layout, Spin } from 'antd';
@@ -83,8 +83,9 @@ const App = () => {
           <Route exact path="/host" component={Host}/>
           <Route exact path="/listing/:id" render ={props => <Listing {...props}/>}/>
           <Route exact path="/login" render ={props => <Login {...props} setViewer={setViewer}/>}/>
+          <Route exact path="/stripe" render ={props => <Stripe {...props} viewer={viewer} setViewer={setViewer}/>}/>
           <Route exact path="/listings/:location?" component={Listings}/>
-          <Route exact path="/user/:id" render ={props => <User {...props} viewer={viewer}/>}/>
+          <Route exact path="/user/:id" render ={props => <User {...props} viewer={viewer} setViewer={setViewer}/>}/>
           <Route component={NotFound}/>
         </Switch>
       </Layout>
