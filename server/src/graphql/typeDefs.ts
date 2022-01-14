@@ -64,12 +64,16 @@ type User{
 type Viewer{
     id: ID
     token: String
-    avatar:String
+    avatar: String
     hasWallet: Boolean
     didRequest: Boolean! 
 }
 
 input LogInInput{
+    code: String!
+}
+
+input ConnectStripeInput{
     code: String!
 }
 
@@ -83,5 +87,7 @@ type Query{
 type Mutation{
     logIn(input: LogInInput): Viewer!
     logOut: Viewer!
+    connectStripe(input: ConnectStripeInput!): Viewer!
+    disconnectStripe: Viewer! 
 }
 `;
