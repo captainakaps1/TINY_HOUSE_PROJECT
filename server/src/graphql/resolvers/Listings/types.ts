@@ -19,6 +19,20 @@ export interface ListingBookingsData{
     result: Booking[]
 }
 
+export interface HostListingInput{
+    title: string
+    description: string
+    image: string
+    type: ListingType
+    address: string
+    price: number
+    numOfGuests: number
+}
+
+export interface HostListingArgs{
+    input: HostListingInput
+}
+
 export interface ListingsArgs{
     location: string | null
     filter: ListingsFilters
