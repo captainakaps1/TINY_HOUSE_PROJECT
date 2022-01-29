@@ -73,7 +73,7 @@ export const Host = ({viewer, form}: Props & FormComponentProps) =>{
             delete input.city
             delete input.state
             delete input.postalCode
-
+            
             hostListing ({
                 variables:{
                     input
