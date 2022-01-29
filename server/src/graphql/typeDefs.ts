@@ -80,7 +80,10 @@ input ConnectStripeInput{
 input HostListingInput{
     title: String!
     description: String!
+<<<<<<< HEAD
     type: ListingType!
+=======
+>>>>>>> master
     image: String!
     address: String!
     price: Int!

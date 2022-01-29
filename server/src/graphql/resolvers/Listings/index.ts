@@ -2,7 +2,7 @@ import { IResolvers } from "apollo-server-express";
 import { Request } from "express";
 import { ObjectId } from "mongodb";
 import { authorize } from "../../../lib/utils"
-import { Google } from "../../../lib/api";
+import { Google,Cloudinary } from "../../../lib/api";
 import { Database, Listing, ListingType, User } from "../../../lib/types"
 import { ListingArgs, ListingBookingsArgs, ListingBookingsData, ListingsArgs, ListingsData, ListingsFilters, ListingsQuery,HostListingArgs, HostListingInput } from "./types"
 
@@ -16,7 +16,7 @@ const verifyHostListingInput= ({title, description, type, price}: HostListingInp
         throw new Error("Listing description must be under 5000 characters")
     }
 
-    if(type !== ListingType.Apartment && ListingType.House){
+    if(type !== ListingType.Apartment && type !== ListingType.House){
         throw new Error("Listing type must be either an apartment or house")
     }
 
@@ -98,6 +98,7 @@ export const listingResolvers: IResolvers = {
         }
     },
     Mutation:{
+<<<<<<< HEAD
         hostListing: async(_root: undefined, {input}: HostListingArgs, {db, req}:{db:Database , req: Request}):Promise<Listing> => {
             verifyHostListingInput(input)
 
@@ -112,9 +113,13 @@ export const listingResolvers: IResolvers = {
                 throw new Error("invalid address input")
             }
 
+
+            const imageURL=await Cloudinary.upload(input.image)
+
             const insertResult = await db.listings.insertOne({
                 _id: new ObjectId(),
                 ...input,
+                image: imageURL,
                 bookings:[],
                 bookingsIndex: {},
                 country,
@@ -131,6 +136,10 @@ export const listingResolvers: IResolvers = {
             )
 
             return insertedListing
+=======
+        hostListing: () => {
+            return "Mutation.hostListing"
+>>>>>>> master
         }
     },
     Listing: {
