@@ -98,7 +98,6 @@ export const listingResolvers: IResolvers = {
         }
     },
     Mutation:{
-<<<<<<< HEAD
         hostListing: async(_root: undefined, {input}: HostListingArgs, {db, req}:{db:Database , req: Request}):Promise<Listing> => {
             verifyHostListingInput(input)
 
@@ -136,10 +135,6 @@ export const listingResolvers: IResolvers = {
             )
 
             return insertedListing
-=======
-        hostListing: () => {
-            return "Mutation.hostListing"
->>>>>>> master
         }
     },
     Listing: {

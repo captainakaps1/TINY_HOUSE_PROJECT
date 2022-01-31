@@ -80,14 +80,18 @@ input ConnectStripeInput{
 input HostListingInput{
     title: String!
     description: String!
-<<<<<<< HEAD
     type: ListingType!
-=======
->>>>>>> master
     image: String!
     address: String!
     price: Int!
     numOfGuests: Int!
+}
+
+input CreateBookingInput{
+    id: ID!
+    source: String!
+    checkIn: String!
+    checkOut: String! 
 }
 
 type Query{
@@ -103,5 +107,6 @@ type Mutation{
     connectStripe(input: ConnectStripeInput!): Viewer!
     disconnectStripe: Viewer! 
     hostListing(input: HostListingInput): Listing!
+    createBooking(input: CreateBookingInput!): Booking!
 }
 `;
