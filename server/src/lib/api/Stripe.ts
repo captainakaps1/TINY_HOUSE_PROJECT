@@ -12,5 +12,19 @@ export const Stripe = {
         })
 
         return response
+    },
+    charge:async (amount:number, source:string, stripeAccount: string) => {
+        const res = await client.charges.create({
+            amount,
+            currency: "usd",
+            source,
+            application_fee: Math.round(amount * 0.05)
+        },{
+            stripe_account:stripeAccount
+        })
+
+        if(res.status !== "succeeded") {
+            throw new Error("failed to create charge with Stripe")
+        }
     }
 }
