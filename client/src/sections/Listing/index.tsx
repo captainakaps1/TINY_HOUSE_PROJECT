@@ -7,10 +7,15 @@ import {PageSkeleton, ErrorBanner} from "../../lib/components"
 import {Col,Layout,Row} from "antd"
 import { Moment } from "moment"
 import {ListingBookings, ListingDetails, ListingCreateBooking} from "./components"
+import { Viewer } from "../../lib/types"
 
 
 interface MatchParams{
     id: string
+}
+
+interface Props{
+    viewer: Viewer
 }
 
 
@@ -19,7 +24,7 @@ const { Content } = Layout
 const PAGE_LIMIT = 3
 
 
-export const Listing = ({ match }: RouteComponentProps<MatchParams>) =>{
+export const Listing = ({ viewer, match }:Props & RouteComponentProps<MatchParams>) =>{
     const [bookingsPage, setBookingsPage] = useState(1)
 
     const [checkInDate, setCheckInDate] = useState<Moment | null>(null)
@@ -59,7 +64,7 @@ export const Listing = ({ match }: RouteComponentProps<MatchParams>) =>{
 
     const listingBookingsElement = listingBookings? <ListingBookings listingBookings={listingBookings} bookingsPage={bookingsPage} limit={PAGE_LIMIT} setBookingsPage={setBookingsPage}/> : null
 
-    const listingCreateBookingElement = listing ?<ListingCreateBooking price={listing.price} checkInDate={checkInDate} checkOutDate={checkOutDate} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate}/> : null
+    const listingCreateBookingElement = listing ?<ListingCreateBooking price={listing.price} checkInDate={checkInDate} checkOutDate={checkOutDate} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} viewer={viewer} host={listing.host} bookingsIndex={listing.bookingsIndex}/> : null
 
     return (
         <Content className="listing">
