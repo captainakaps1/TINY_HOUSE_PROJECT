@@ -12,7 +12,7 @@ interface Props {
     viewerIsUser: boolean
     viewer: Viewer
     setViewer: (viewer: Viewer) => void
-    handleUserRefetch: () => void
+    handleUserRefetch: () => Promise<void>
 }
 
 
