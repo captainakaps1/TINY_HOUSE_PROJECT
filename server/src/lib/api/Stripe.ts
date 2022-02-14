@@ -20,7 +20,7 @@ export const Stripe = {
             source,
             application_fee: Math.round(amount * 0.05)
         },{
-            stripe_account:stripeAccount
+            stripeAccount:stripeAccount
         })
 
         if(res.status !== "succeeded") {

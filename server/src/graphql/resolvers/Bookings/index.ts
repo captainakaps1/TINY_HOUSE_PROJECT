@@ -129,7 +129,7 @@ export const bookingResolvers: IResolvers = {
             return booking._id.toString()
         },
         listing: (booking: Booking, _args: {}, {db}: {db:Database}): Promise<Listing | null> => {
-            return db.listings.findOne({id: booking.listing})
+            return db.listings.findOne({_id: booking.listing})
         },
         tenant: (booking:Booking, _args: {}, {db}: {db:Database}) => {
             return db.users.findOne({_id: booking.tenant})
